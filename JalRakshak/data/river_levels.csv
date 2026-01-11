@@ -1,0 +1,9 @@
+date,state,district,river_name,gauge_level_m,danger_level_m,trend
+2024-05-01,Assam,Dibrugarh,Brahmaputra,104.2,105.7,Rising
+2024-05-01,Assam,Guwahati,Brahmaputra,48.5,49.6,Steady
+2024-05-02,Assam,Dibrugarh,Brahmaputra,105.1,105.7,Rising
+2024-05-02,Assam,Guwahati,Brahmaputra,49.0,49.6,Rising
+2024-05-03,Assam,Dibrugarh,Brahmaputra,105.8,105.7,Rising (Critical)
+2024-05-03,Assam,Guwahati,Brahmaputra,49.4,49.6,Rising
+2024-05-04,Assam,Dibrugarh,Brahmaputra,106.2,105.7,Rising (Critical)
+2024-05-04,Assam,Guwahati,Brahmaputra,49.7,49.6,Rising (Above Danger)

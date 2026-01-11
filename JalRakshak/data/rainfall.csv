@@ -1,0 +1,9 @@
+date,state,district,rainfall_mm,departure_percentage
+2024-05-01,Assam,Dibrugarh,45.2,15
+2024-05-01,Assam,Guwahati,12.5,-5
+2024-05-02,Assam,Dibrugarh,88.0,120
+2024-05-02,Assam,Guwahati,34.2,40
+2024-05-03,Assam,Dibrugarh,112.5,210
+2024-05-03,Assam,Guwahati,56.8,85
+2024-05-04,Assam,Dibrugarh,25.0,10
+2024-05-04,Assam,Guwahati,15.2,-2
