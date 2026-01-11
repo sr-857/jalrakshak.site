@@ -10,6 +10,31 @@ JalRakshak is an AI-powered flood intelligence tool designed to convert satellit
 - **Multilingual Voice Alerts**: Generates live alerts in Assamese, Bengali, Hindi, and English.
 - **Zero Data Retention**: Privacy-first architecture with no personal data storage.
 
+## Impact on North East India
+The North East region faces unique flood challenges due to rapid river swelling and complex topography. JalRakshak addresses this by:
+- **Last-Mile Connectivity**: Delivering voice alerts in local languages (Assamese, Bengali) for communities with low literacy.
+- **Privacy First**: Ensuring compatibility with the Digital Personal Data Protection (DPDP) Act by storing no user data.
+- **Resiliency**: Lightweight architecture designed to work on low-bandwidth networks typical in the NER.
+
+## System Architecture
+
+```mermaid
+graph TD
+    A[Sentinel-1 SAR Data] -->|Water Mask| B(AI Inference Engine)
+    C[IMD Rainfall Data] -->|Forecast| B
+    D[CWC River Levels] -->|Real-time| B
+    B -->|Risk Assessment| E{Flood Risk Logic}
+    E -->|High Risk| F[Generate Alert]
+    F -->|Translation| G[Multilingual TTS]
+    G -->|Voice Output| H[User Device]
+```
+
+## Dataset Strategy
+We leverage open government and scientific datasets to ensure accuracy and scalability:
+1.  **Sentinel-1 SAR**: Used for real-time water mask interpretation (simulated for prototype).
+2.  **IMD (India Meteorological Department)**: Rainfall history and forecasts for predictive modeling.
+3.  **CWC (Central Water Commission)**: Real-time river gauge levels for validation.
+
 ## Folder Structure
 - `/frontend`: Responsive web UI (HTML, CSS, JS).
 - `/data`: Sample public datasets (IMD Rainfall, CWC River Levels).

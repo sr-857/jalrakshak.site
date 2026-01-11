@@ -74,13 +74,13 @@ export const MOCK_RISK_DATA: Record<string, FloodRiskData> = {
     confidence: 96,
     signals: {
       rainfall: "+120% above normal (Extreme Event)",
-      riverLevel: "Above Danger Level (2.1m over limit)",
-      satelliteInference: "Major flooding confirmed in residential sectors"
+      riverLevel: "Above Danger Level (2.1m over limit at Kaziranga)",
+      satelliteInference: "Major flooding confirmed in residential sectors and highways"
     },
     alerts: {
       en: "EMERGENCY: Critical flood levels reached. Immediate evacuation recommended for designated zones. Do not cross flooded roads.",
       hi: "आपातकालीन: बाढ़ का स्तर गंभीर है। तुरंत सुरक्षित स्थानों पर जाएँ।",
-      as: "জৰুৰীকালীন অৱস্থা: বানপানীৰ মাত্ৰা অতি সংকটজনক। নিৰাপদ স্থানলৈ যাওক।",
+      as: "জৰুৰীকালীন অৱস্থা: কাজিৰঙা অঞ্চলত বানপানীৰ মাত্ৰা বিপদসীমা পাৰ কৰিছে। নিৰাপদ স্থানলৈ যাওক।",
       bn: "জরুরি অবস্থা: বন্যার মাত্রা অত্যন্ত সংকটজনক। অবিলম্বে নিরাপদ স্থানে সরে যান।"
     }
   },

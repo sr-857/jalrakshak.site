@@ -6,7 +6,7 @@ import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
 });
@@ -17,8 +17,31 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "JalRakshak | Flood Risk Intelligence",
-  description: "Autonomous Multimodal Disaster Intelligence Platform for North-East India.",
+  title: "JalRakshak | AI Flood Intelligence for North East India",
+  description: "Autonomous multimodal disaster intelligence platform converting satellite data into multilingual voice alerts for last-mile connectivity in Assam and NER.",
+  keywords: ["Flood AI", "Disaster Management", "North East India", "Assam Floods", "Voice Alerts", "Sentinel-1", "IndiaAI"],
+  openGraph: {
+    title: "JalRakshak | Voice-First Flood Guardian",
+    description: "AI-powered flood risk assessment and multilingual voice alerts for North East India.",
+    url: "https://jalrakshak.site",
+    siteName: "JalRakshak",
+    images: [
+      {
+        url: "/og-image.png", // Placeholder for actual OG image
+        width: 1200,
+        height: 630,
+        alt: "JalRakshak Dashboard",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "JalRakshak | AI Flood Intelligence",
+    description: "Saving lives in North East India with AI-driven flood alerts.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
