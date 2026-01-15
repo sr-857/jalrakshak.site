@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JalRakshak | North East Flood Guardian</title>
-    <!-- Modern Bold Typography for Indian Tech Aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -50,7 +49,6 @@
     </nav>
 
     <main id="app">
-        <!-- Input Screen -->
         <section id="selection-view" class="view active">
             <div class="hero-text">
                 <div class="badge-pill">NE REGION PILOT • PHASE 1</div>
@@ -110,7 +108,6 @@
             <p class="tagline-small">Early alerts. Local languages. Real data. 🇮🇳</p>
         </section>
 
-        <!-- Result Screen -->
         <section id="dashboard-view" class="view">
             <div class="dashboard-header">
                 <button class="back-btn"><i data-lucide="arrow-left"></i> Change Region</button>
@@ -118,7 +115,6 @@
             </div>
 
             <div class="dashboard-grid">
-                <!-- Main Risk Card -->
                 <div id="risk-card" class="main-card risk-low">
                     <span class="card-label">CURRENT RISK LEVEL</span>
                     <div class="risk-indicator">
@@ -133,7 +129,6 @@
                     </div>
                 </div>
 
-                <!-- Signal Fusion Card -->
                 <div class="main-card signal-card">
                     <div class="card-top">
                         <h4>Signal Fusion</h4>
@@ -164,7 +159,6 @@
                     </div>
                 </div>
 
-                <!-- AI Inference Card -->
                 <div class="main-card ai-card">
                     <div class="ai-content">
                         <span class="ai-badge">SATELLITE AI</span>
@@ -181,7 +175,6 @@
                 </div>
             </div>
 
-            <!-- Voice Alert Section -->
             <div id="alerts-container" class="alert-section">
                 <div class="section-title">
                     <h4>Multilingual Voice Alert</h4>
@@ -218,6 +211,11 @@
         </section>
     </main>
 
+    <audio id="audio-en" src="/static/audio/alert_en.wav" preload="auto"></audio>
+    <audio id="audio-as" src="/static/audio/flood_warning_as.wav" preload="auto"></audio>
+    <audio id="audio-bn" src="/static/audio/flood_warning_bn.wav" preload="auto"></audio>
+    <audio id="audio-hi" src="/static/audio/alert_hi.wav" preload="auto"></audio>
+
     <div id="toast-notify" class="toast-popup hidden"></div>
 
     <footer>
@@ -243,6 +241,29 @@
     <script src="app.js"></script>
     <script>
         lucide.createIcons();
+
+        // Multilingual AI Alert Control Logic
+        document.getElementById('play-alert-btn').addEventListener('click', () => {
+            const activeLang = document.querySelector('.tab-btn.active').getAttribute('data-lang');
+            
+            // 1. Pause any currently playing audio
+            const allAudios = document.querySelectorAll('audio');
+            allAudios.forEach(a => { a.pause(); a.currentTime = 0; });
+
+            // 2. Play the selected AI-generated file
+            const targetAudio = document.getElementById(`audio-${activeLang}`);
+            if (targetAudio) {
+                targetAudio.volume = document.getElementById('vol-slider').value;
+                targetAudio.play();
+                
+                // Show visual bars during playback
+                const viz = document.getElementById('viz-bars');
+                viz.classList.remove('hidden');
+                targetAudio.onended = () => viz.classList.add('hidden');
+            } else {
+                console.error("Audio file not found for language:", activeLang);
+            }
+        });
     </script>
 </body>
 </html>
