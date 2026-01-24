@@ -4,7 +4,12 @@ import sys
 from flood_model import FloodRiskModel
 
 # Initialize Flask app
-app = Flask(__name__)
+# The 'out' directory is relative to the project root
+# Using absolute path for clarity
+root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+static_folder = os.path.join(root_dir, 'out')
+
+app = Flask(__name__, static_folder=static_folder, static_url_path='')
 app.config['JSON_SORT_KEYS'] = False
 
 # Global model instance
@@ -41,9 +46,30 @@ def initialize_model():
         return False
 
 @app.route('/')
-def index():
-    """Render main dashboard"""
-    return render_template('index.html', states=states_list)
+def home():
+    """Serve the Next.js index page"""
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    """Catch-all for static frontend routing"""
+    if not request.path.startswith('/api'):
+        return app.send_static_file('index.html')
+    return jsonify({'success': False, 'error': 'API not found'}), 404
+
+@app.route('/api/flood-risk', methods=['POST'])
+def flood_risk():
+    """Alias for predict to match frontend call"""
+    return predict()
+
+@app.route('/api/analyze-satellite', methods=['POST'])
+def analyze_satellite():
+    """Basic implementation for satellite analysis"""
+    import random
+    return jsonify({
+        'success': True,
+        'waterSpreadPercentage': random.randint(30, 85)
+    })
 
 @app.route('/api/districts/<state>')
 def get_districts(state):

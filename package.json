@@ -6,7 +6,9 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "build:all": "next build",
+        "serve:api": "python src/api-server/app.py"
     },
     "dependencies": {
         "@babel/parser": "^7.28.5",
