@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Risk Assessment System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #fb923c;
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fb923c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #fb923c;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results-section {
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        .results-section.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .location-info {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #e2e8f0;
+        }
+
+        .location-info .state {
+            color: #fb923c;
+        }
+
+        .risk-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .risk-box {
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #334155;
+            transition: all 0.3s ease;
+        }
+
+        .risk-box.low {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border-color: #22c55e;
+        }
+
+        .risk-box.medium {
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.1) 0%, rgba(234, 179, 8, 0.05) 100%);
+            border-color: #eab308;
+        }
+
+        .risk-box.high {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border-color: #ef4444;
+        }
+
+        .risk-level {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .risk-box.low .risk-level { color: #22c55e; }
+        .risk-box.medium .risk-level { color: #eab308; }
+        .risk-box.high .risk-level { color: #ef4444; }
+
+        .confidence-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .confidence {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .probability-chart {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .prob-item {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+        }
+
+        .prob-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .prob-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fb923c;
+        }
+
+        .rainfall-data {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border: 1px solid #334155;
+        }
+
+        .rainfall-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .rainfall-item {
+            padding: 10px;
+            background: #1e293b;
+            border-radius: 6px;
+            border-left: 3px solid #fb923c;
+        }
+
+        .rainfall-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .rainfall-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .features-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fb923c;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .feature-item {
+            background: #0f172a;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #fb923c;
+            font-size: 13px;
+        }
+
+        .feature-label {
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .feature-value {
+            color: #fb923c;
+            font-weight: 600;
+        }
+
+        .recommendations {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .rec-item {
+            padding: 12px 0;
+            padding-left: 30px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            border-bottom: 1px solid #334155;
+        }
+
+        .rec-item:last-child {
+            border-bottom: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #334155;
+            border-top: 4px solid #fb923c;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+            border: 2px solid #ef4444;
+            color: #fca5a5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .accuracy-badge {
+            display: inline-block;
+            background: #0f172a;
+            border: 1px solid #fb923c;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #fb923c;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-display {
+                grid-template-columns: 1fr;
+            }
+
+            .probability-chart {
+                grid-template-columns: 1fr;
+            }
+
+            .rainfall-row {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🌊 FLOOD RISK ASSESSMENT</div>
+            <div class="tagline">AI-POWERED EARLY WARNING SYSTEM</div>
+        </header>
+
+        <div class="main-grid">
+            <div class="card">
+                <div class="card-title">
+                    <span>📍</span> Select Location
+                </div>
+                <form id="predictionForm">
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" required>
+                            <option value="">-- Select State --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="district">District</label>
+                        <select id="district" required disabled>
+                            <option value="">-- Select District --</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">🔍 Analyze Risk</button>
+                </form>
+                <div class="error" id="error"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span>ℹ️</span> How It Works
+                </div>
+                <div style="line-height: 1.8; color: #cbd5e1; font-size: 14px;">
+                    <p style="margin-bottom: 12px;">
+                        <strong style="color: #fb923c;">📊 Data Analysis:</strong><br>
+                        Our AI model analyzes rainfall patterns and historical climate data.
+                    </p>
+                    <p style="margin-bottom: 12px;">
+                        <strong style="color: #fb923c;">🎯 Classification:</strong><br>
+                        Classifies flood risk into LOW, MEDIUM, or HIGH categories.
+                    </p>
+                    <p>
+                        <strong style="color: #fb923c;">⚡ Recommendations:</strong><br>
+                        Provides actionable recommendations for each risk level.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing flood risk...</p>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="result-card">
+                <div class="location-info">
+                    <span class="state" id="resultState"></span>, <span id="resultDistrict"></span>
+                </div>
+
+                <div class="risk-display">
+                    <div class="risk-box" id="riskBox">
+                        <div class="risk-level" id="riskLevel"></div>
+                        <div style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">Flood Risk</div>
+                    </div>
+                    <div class="risk-box" style="border-color: #fb923c; background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);">
+                        <div class="confidence-label">Model Confidence</div>
+                        <div class="confidence" id="confidence"></div>
+                        <div class="accuracy-badge" id="accuracyBadge"></div>
+                    </div>
+                </div>
+
+                <div class="features-section">
+                    <div class="section-title">📊 Probability Distribution</div>
+                    <div class="probability-chart" id="probabilityChart"></div>
+                </div>
+
+                <div class="features-section">
+                    <div class="section-title">💧 Rainfall Data</div>
+                    <div class="rainfall-data" id="rainfallData"></div>
+                </div>
+
+                <div class="features-section">
+                    <div class="section-title">🔧 Feature Importance</div>
+                    <div class="feature-list" id="featuresList"></div>
+                </div>
+
+                <div class="recommendations">
+                    <div class="section-title">📋 Recommendations</div>
+                    <div id="recommendationsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize states dropdown
+        function initializeStates() {
+            const states = document.getElementById('state');
+            
+            fetch('/').then(response => response.text()).then(html => {
+                // Extract states from the initial load
+                const stateOptions = [
+                    "Assam",
+                    "Meghalaya",
+                    "Mizoram",
+                    "Manipur",
+                    "Nagaland",
+                    "Sikkim",
+                    "Tripura",
+                    "Arunachal Pradesh"
+                ];
+                
+                stateOptions.forEach(state => {
+                    const option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    states.appendChild(option);
+                });
+            }).catch(() => {
+                // Fallback if fetch fails
+                const stateOptions = [
+                    "Assam",
+                    "Meghalaya",
+                    "Mizoram",
+                    "Manipur",
+                    "Nagaland",
+                    "Sikkim",
+                    "Tripura",
+                    "Arunachal Pradesh"
+                ];
+                
+                stateOptions.forEach(state => {
+                    const option = document.createElement('option');
+                    option.value = state;
+                    option.textContent = state;
+                    states.appendChild(option);
+                });
+            });
+        }
+
+        // Load districts when state is selected
+        document.getElementById('state').addEventListener('change', async function() {
+            const state = this.value;
+            const districtSelect = document.getElementById('district');
+            
+            if (!state) {
+                districtSelect.disabled = true;
+                districtSelect.innerHTML = '<option value="">-- Select District --</option>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/districts/${state}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    districtSelect.innerHTML = '<option value="">-- Select District --</option>';
+                    result.districts.forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    });
+                    districtSelect.disabled = false;
+                }
+            } catch (error) {
+                console.error('Error loading districts:', error);
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            
+            if (!state || !district) {
+                showError('Please select both state and district');
+                return;
+            }
+            
+            showLoading(true);
+            hideError();
+            
+            try {
+                const response = await fetch('/api/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ state, district })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayResults(result.data);
+                } else {
+                    showError(result.error || 'Error predicting flood risk');
+                }
+            } catch (error) {
+                showError('Error: ' + error.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        function displayResults(data) {
+            // Update location
+            document.getElementById('resultState').textContent = data.state;
+            document.getElementById('resultDistrict').textContent = data.district;
+            
+            // Update risk level
+            const riskLevel = data.risk_level;
+            const riskBox = document.getElementById('riskBox');
+            riskBox.className = `risk-box ${riskLevel.toLowerCase()}`;
+            document.getElementById('riskLevel').textContent = riskLevel;
+            
+            // Update confidence
+            document.getElementById('confidence').textContent = data.confidence.toFixed(1) + '%';
+            document.getElementById('accuracyBadge').textContent = `Model Accuracy: ${data.model_accuracy.toFixed(1)}%`;
+            
+            // Update probability distribution
+            const probChart = document.getElementById('probabilityChart');
+            probChart.innerHTML = '';
+            
+            for (const [risk, prob] of Object.entries(data.all_probabilities)) {
+                const item = document.createElement('div');
+                item.className = 'prob-item';
+                item.innerHTML = `
+                    <div class="prob-label">${risk}</div>
+                    <div class="prob-value">${prob.toFixed(1)}%</div>
+                `;
+                probChart.appendChild(item);
+            }
+            
+            // Update rainfall data
+            const rainfall = data.rainfall_data;
+            const rainfallHtml = `
+                <div class="rainfall-row">
+                    <div class="rainfall-item">
+                        <div class="rainfall-label">Actual Rainfall</div>
+                        <div class="rainfall-value">${rainfall.actual_rainfall_mm.toFixed(1)} mm</div>
+                    </div>
+                    <div class="rainfall-item">
+                        <div class="rainfall-label">Normal Rainfall</div>
+                        <div class="rainfall-value">${rainfall.normal_rainfall_mm.toFixed(1)} mm</div>
+                    </div>
+                </div>
+                <div class="rainfall-row">
+                    <div class="rainfall-item" style="grid-column: 1 / -1;">
+                        <div class="rainfall-label">Departure from Normal</div>
+                        <div class="rainfall-value" style="color: ${rainfall.departure_percent > 0 ? '#ef4444' : '#22c55e'};">
+                            ${rainfall.departure_percent > 0 ? '+' : ''}${rainfall.departure_percent.toFixed(1)}%
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('rainfallData').innerHTML = rainfallHtml;
+            
+            // Update feature importance
+            const features = document.getElementById('featuresList');
+            features.innerHTML = '';
+            
+            // Sort features by importance
+            const sortedFeatures = Object.entries(data.feature_importance)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+            
+            sortedFeatures.forEach(([feature, importance]) => {
+                const item = document.createElement('div');
+                item.className = 'feature-item';
+                item.innerHTML = `
+                    <div class="feature-label">${feature.replace(/_/g, ' ')}</div>
+                    <div class="feature-value">${importance.toFixed(1)}%</div>
+                `;
+                features.appendChild(item);
+            });
+            
+            // Update recommendations
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = '';
+            
+            data.recommendations.forEach(rec => {
+                const item = document.createElement('div');
+                item.className = 'rec-item';
+                item.textContent = rec;
+                recList.appendChild(item);
+            });
+            
+            // Show results
+            document.getElementById('resultsSection').classList.add('show');
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        function showError(message) {
+            const error = document.getElementById('error');
+            error.textContent = message;
+            error.classList.add('show');
+        }
+
+        function hideError() {
+            document.getElementById('error').classList.remove('show');
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', initializeStates);
+    </script>
+</body>
+</html>
