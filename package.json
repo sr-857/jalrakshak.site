@@ -7,8 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "build:all": "next build",
-        "serve:api": "python src/api-server/app.py"
+        "vercel-dev": "vercel dev"
     },
     "dependencies": {
         "@babel/parser": "^7.28.5",
