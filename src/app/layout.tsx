@@ -17,6 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jalrakshak.site"),
   title: "JalRakshak | AI Flood Intelligence for North East India",
   description: "Autonomous multimodal disaster intelligence platform converting satellite data into multilingual voice alerts for last-mile connectivity in Assam and NER.",
   keywords: ["Flood AI", "Disaster Management", "North East India", "Assam Floods", "Voice Alerts", "Sentinel-1", "IndiaAI"],
@@ -27,10 +28,10 @@ export const metadata: Metadata = {
     siteName: "JalRakshak",
     images: [
       {
-        url: "/og-image.png", // Placeholder for actual OG image
-        width: 1200,
-        height: 630,
-        alt: "JalRakshak Dashboard",
+        url: "/og-image.png",
+        width: 1024,
+        height: 1024,
+        alt: "JalRakshak AI Dashboard",
       },
     ],
     locale: "en_IN",
