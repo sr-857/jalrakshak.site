@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JalRakshak - AI Model Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #1a1a2e; color: #eee; min-height: 100vh; padding: 2rem; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 2rem; color: #ff6b35; }
+        .card { background: #16213e; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        select, button { width: 100%; padding: 0.75rem; border-radius: 8px; border: none; font-size: 1rem; margin-bottom: 1rem; }
+        select { background: #0f3460; color: #eee; }
+        button { background: #ff6b35; color: #fff; cursor: pointer; font-weight: 600; }
+        button:hover { background: #e55a2b; }
+        .result { background: #0f3460; padding: 1.5rem; border-radius: 8px; }
+        .risk-high { border-left: 4px solid #ef4444; }
+        .risk-medium { border-left: 4px solid #eab308; }
+        .risk-low { border-left: 4px solid #22c55e; }
+        .metric { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #1a1a2e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 JalRakshak AI Model</h1>
+        <div class="card">
+            <label for="state">Select State</label>
+            <select id="state" onchange="loadDistricts()">
+                <option value="">-- Select State --</option>
+                {% for state in states %}
+                <option value="{{ state }}">{{ state }}</option>
+                {% endfor %}
+            </select>
+            <label for="district">Select District</label>
+            <select id="district" disabled>
+                <option value="">-- Select District --</option>
+            </select>
+            <button onclick="analyzeRisk()">Analyze Risk</button>
+        </div>
+        <div id="result" class="card" style="display:none;"></div>
+    </div>
+    <script>
+        async function loadDistricts() {
+            const state = document.getElementById('state').value;
+            const districtSelect = document.getElementById('district');
+            if (!state) { districtSelect.disabled = true; return; }
+            const res = await fetch(`/api/districts/${encodeURIComponent(state)}`);
+            const data = await res.json();
+            if (data.success) {
+                districtSelect.innerHTML = '<option value="">-- Select District --</option>' +
+                    data.districts.map(d => `<option value="${d}">${d}</option>`).join('');
+                districtSelect.disabled = false;
+            }
+        }
+        async function analyzeRisk() {
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            if (!state || !district) { alert('Please select state and district'); return; }
+            const res = await fetch('/api/predict', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ state, district })
+            });
+            const data = await res.json();
+            const resultDiv = document.getElementById('result');
+            if (data.success) {
+                const d = data.data;
+                const riskClass = d.risk_level === 'HIGH' ? 'risk-high' : d.risk_level === 'MEDIUM' ? 'risk-medium' : 'risk-low';
+                resultDiv.className = `card result ${riskClass}`;
+                resultDiv.innerHTML = `
+                    <h2>${d.district}, ${d.state}</h2>
+                    <div class="metric"><span>Risk Level</span><strong>${d.risk_level}</strong></div>
+                    <div class="metric"><span>Confidence</span><strong>${d.confidence.toFixed(1)}%</strong></div>
+                    <h3 style="margin-top:1rem;">Recommendations</h3>
+                    <ul>${d.recommendations.map(r => `<li>${r}</li>`).join('')}</ul>
+                `;
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = `<p>Error: ${data.error}</p>`;
+                resultDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,0 @@
-ls: cannot access '/home/roney/.nvm': No such file or directory
-ls: cannot access '/home/roney/.fnm': No such file or directory
-ls: cannot access '/home/roney/.volta': No such file or directory
-ls: cannot access '/home/roney/.npm': No such file or directory
-ls: cannot access '/home/roney/.node_modules': No such file or directory

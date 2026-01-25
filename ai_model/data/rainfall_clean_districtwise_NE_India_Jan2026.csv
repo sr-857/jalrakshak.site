@@ -1,0 +1,17 @@
+State,District,Actual Rainfall (mm),Normal Rainfall (mm),Departure (%)
+Assam,Kamrup Metro (Guwahati),0.0,4.6,-99
+Assam,Kamrup Rural,0.0,9.3,-100
+Assam,Dibrugarh,0.0,15.4,-100
+Assam,Cachar (Silchar),0.0,7.2,-100
+Assam,Jorhat,0.0,13.8,-100
+Assam,Nagaon,0.0,11.1,-100
+Assam,Barpeta,0.0,5.8,-100
+Assam,Dhubri,0.0,11.9,-100
+Meghalaya,East Khasi Hills,0.0,6.8,-100
+Meghalaya,West Garo Hills,0.0,6.5,-100
+Meghalaya,Ri-Bhoi,0.0,4.7,-100
+Meghalaya,Jaintia Hills,0.0,22.6,-100
+Mizoram,Aizawl,0.0,5.9,-100
+Mizoram,Champhai,0.0,4.9,-100
+Mizoram,Serchhip,0.0,4.1,-100
+Mizoram,Lunglei,0.1,2.9,-97

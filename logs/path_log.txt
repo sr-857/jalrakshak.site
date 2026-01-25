@@ -1,2 +1,0 @@
-/home/roney/.local/bin:/home/roney/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
-/usr/bin/which: no node in (/home/roney/.local/bin:/home/roney/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)
