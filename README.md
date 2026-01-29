@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌊 JalRakshak
+# 🌊 𝕁𝕒𝕃 ℝ𝕒𝕜𝕤𝕙𝕒𝕜
 
 ### *Autonomous Hydrology Intelligence for Bharat*
 
@@ -8,13 +8,16 @@
 <img src="https://img.shields.io/badge/Version-2.5_Stable-22c55e?style=for-the-badge" alt="V2.5 Stable"/>
 <img src="https://img.shields.io/badge/DPDP-Compliant-8b5cf6?style=for-the-badge&logo=shield&logoColor=white" alt="DPDP Compliant"/>
 <img src="https://img.shields.io/badge/Aatmanirbhar-Bharat-ff6b35?style=for-the-badge&logo=india&logoColor=white" alt="Aatmanirbhar"/>
-<img src="https://img.shields.io/badge/ML_Model-Random_Forest-10b981?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="ML Model"/>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://jalrakshaksite.vercel.app/)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsr-857%2Fjalrakshak.site)
 
 ---
 
 ### **🎨 Live Application Preview**
+
+---
+
+
 
 <table>
 <tr>
@@ -50,358 +53,83 @@
 
 ---
 
+
+
 ## 📑 Table of Contents
 
+- [📂 Project Structure](#-project-structure)
+- [💡 Key Features](#-key-features)
+- [🏗️ Architecture](#️-architecture)
 - [🎯 The Challenge](#-the-challenge)
 - [🇮🇳 Aatmanirbhar Bharat AI](#-aatmanirbhar-bharat-ai)
 - [🚀 Why JalRakshak Wins](#-why-jalrakshak-wins)
-- [💡 Key Features](#-key-features)
-- [🏗️ Architecture](#️-architecture)
 - [🤖 AI Model Architecture](#-ai-model-architecture)
 - [🛠️ Tech Stack](#️-tech-stack)
-- [📂 Project Structure](#-project-structure)
 - [⚡ Quick Start](#-quick-start)
 - [🧪 Testing the AI Model](#-testing-the-ai-model)
 - [📊 Data Sources](#-data-sources)
-- [🔒 Privacy & Responsible AI](#-privacy--responsible-ai)
 - [💻 How to Use](#-how-to-use-the-live-application)
-- [🤝 Contributing](#-contributing)
 - [👥 Our Team](#-our-team)
 - [📞 Contact](#-contact--support)
 
+
+
+
 ---
 
-## 🎯 The Challenge
+## 📂 Project Structure
 
 <div align="center">
 
-### **Every monsoon, North East India faces devastating floods**
-
-*JalRakshak brings Aatmanirbhar AI intelligence to protect Bharat's communities*
+### **📁 Full Repository Layout**
 
 </div>
 
-<table>
-<tr>
-<td width="50%" valign="top">
+```
+JalRakshak/
+│
+├── 📁 Frontend (Next.js Application)
+│   ├── 📁 src/
+│   │   ├── 📁 app/              # Next.js App Router
+│   │   │   ├── 📁 api/          # API endpoints
+│   │   │   ├── layout.tsx       # Root layout
+│   │   │   └── page.tsx         # Home page
+│   │   │
+│   │   ├── 📁 components/       # React Components
+│   │   │   ├── Hero.tsx         # Landing hero
+│   │   │   ├── RiskDashboard.tsx
+│   │   │   ├── VoiceAlert.tsx
+│   │   │   └── LocationPicker.tsx
+│   │   │
+│   │   └── 📁 lib/              # Utilities
+│   │       ├── aiEngine.ts      # AI risk scoring
+│   │       ├── dataLoader.ts    # Dataset management
+│   │       └── ttsGenerator.ts  # Voice synthesis
+│   │
+│   ├── 📁 public/
+│   │   ├── 📁 data/             # Public datasets
+│   │   └── 📁 assets/           # Images, icons
+│   │
+│   ├── 📄 package.json
+│   ├── 📄 next.config.js
+│   └── 📄 tailwind.config.ts
+│
+├── 📁 AI Model (Python Backend)
+│   ├── 📄 requirements.txt      # Python dependencies
+│   ├── 📄 data_processor.py     # Data loading & feature engineering
+│   ├── 📄 flood_model.py        # ML model training & prediction
+│   ├── 📄 app.py                # Flask web server
+│   ├── 📁 templates/
+│   │   └── index.html           # Model dashboard UI
+│   ├── 📁 models/
+│   │   └── flood_model.pkl      # Trained model (auto-generated)
+│   └── 📁 data/
+│       └── rainfall_clean_districtwise_NE_India_Jan2026.csv
+│
+├── 📄 README.md                 # This file!
+└── 📄 LICENSE
+```
 
-### 🚨 Current Reality
-
-- ⏰ **Delayed alerts** that arrive too late
-- 📊 **Text-heavy dashboards** inaccessible to many
-- 🗺️ **Generic warnings** lacking local context
-- 📱 **Poor last-mile** communication infrastructure
-- 💔 **Lives at risk** every monsoon season
-- 🌍 **Foreign dependency** on disaster tech
-
-</td>
-<td width="50%" valign="top">
-
-### ✨ JalRakshak Solution
-
-- 🎤 **Voice-first alerts** in local languages
-- ⚡ **Real-time AI** with Sentinel-1 SAR
-- 📍 **District-level precision** targeting
-- 🔊 **30-45 second** actionable messages
-- 💪 **Deployment-ready** for immediate impact
-- 🇮🇳 **Aatmanirbhar** Indian technology
-
-</td>
-</tr>
-</table>
-
----
-
-## 🇮🇳 Aatmanirbhar Bharat AI
-
-<div align="center">
-
-### **Built in India, For India**
-
-</div>
-
-JalRakshak embodies the spirit of **Aatmanirbhar Bharat** (Self-Reliant India):
-
-- 🏛️ **Indian Data Sources**: IMD, CWC, ASDMA, ISRO
-- 💻 **Indian Development**: Built by Indian engineers for Indian communities
-- 🗣️ **Indian Languages**: Assamese, Bengali, Hindi, English
-- 🎯 **Indian Context**: NER-specific rainfall patterns & river behaviors
-- 🔒 **Indian Privacy**: DPDP Act compliant from the ground up
-- 🌏 **Indian Innovation**: Autonomous hydrology intelligence pioneered in India
-
-**This isn't imported technology adapted for India.**  
-**This is Indian innovation solving Indian challenges.**
-
----
-
-## 🚀 Why JalRakshak Wins
-
-<div align="center">
-
-# **🏆 THE COMPLETE FLOOD INTELLIGENCE REVOLUTION 🏆**
-
-### *Transforming Data into Life-Saving Action Through Voice, AI, and Community-First Design*
-
-<img src="https://img.shields.io/badge/🌊_INNOVATION-Revolutionary-FF6B6B?style=for-the-badge&labelColor=C92A2A" alt="Innovation"/>
-<img src="https://img.shields.io/badge/🤖_AI-Live_Processing-4ECDC4?style=for-the-badge&labelColor=087E8B" alt="AI"/>
-<img src="https://img.shields.io/badge/🎤_VOICE-First_Technology-95E1D3?style=for-the-badge&labelColor=38A3A5" alt="Voice"/>
-<img src="https://img.shields.io/badge/🛡️_PRIVACY-100%25_Compliant-A8E6CF?style=for-the-badge&labelColor=56C596" alt="Privacy"/>
-<img src="https://img.shields.io/badge/⚡_READY-Deploy_Now-FFE66D?style=for-the-badge&labelColor=F4A261" alt="Ready"/>
-
-</div>
-
----
-
-## 💎 The JalRakshak Difference
-
-<table>
-<tr>
-<td width="33%" align="center" valign="top">
-
-<img src="https://img.shields.io/badge/BREAKTHROUGH-Voice_Intelligence-ff6b6b?style=for-the-badge&labelColor=c92a2a" />
-
-### 🎤 **VOICE-FIRST REVOLUTION**
-
-**🌟 India's First Voice-Centric Flood Alert System**
-
----
-
-**📢 What We Deliver:**
-
-- 🗣️ **30-45 second** actionable voice alerts
-- 🌐 **4 Languages**: Assamese, Bengali, Hindi, English
-- 🔊 **Crystal clear** audio optimized for mobile
-- 📻 **Broadcast ready** for community radio
-- 👂 **Zero literacy barriers** - everyone can hear
-
-**🎯 Why This Wins:**
-
-> *"40% of North East India's rural population has limited literacy. Voice alerts ensure NO ONE is left behind when floods strike."*
-
-**💪 Impact Metrics:**
-
-- ✅ **3x larger reach** than text-based systems
-- ✅ **95% comprehension** rate in user testing
-- ✅ **Instant understanding** in emergencies
-- ✅ **Hands-free** operation during evacuation
-
-</td>
-<td width="33%" align="center" valign="top">
-
-<img src="https://img.shields.io/badge/BREAKTHROUGH-Live_AI_Processing-4ECDC4?style=for-the-badge&labelColor=087E8B" />
-
-### 🤖 **REAL-TIME AI ENGINE**
-
-**🧠 Not Static Models - Live Intelligence**
-
----
-
-**⚡ What We Process:**
-
-- 🛰️ **Satellite imagery** (Sentinel-1 SAR)
-- 🌧️ **Real-time rainfall** (IMD feeds)
-- 🌊 **River levels** (CWC telemetry)
-- 📊 **Historical patterns** (10+ years)
-- 🎲 **Confidence scores** (uncertainty quantification)
-
-**🎯 Why This Wins:**
-
-> *"Live AI adapts to current conditions in real-time. Our model processes fresh data every query, not yesterday's predictions."*
-
-**💪 Technical Edge:**
-
-- ✅ **88.9% accuracy** in flood prediction
-- ✅ **< 2 minutes** processing time
-- ✅ **Random Forest** ensemble learning
-- ✅ **Explainable AI** - every decision is traceable
-
-</td>
-<td width="33%" align="center" valign="top">
-
-<img src="https://img.shields.io/badge/BREAKTHROUGH-Production_Ready-51cf66?style=for-the-badge&labelColor=2f9e44" />
-
-### 🚀 **DEPLOYMENT READY TODAY**
-
-**✅ Not a Concept - A Complete System**
-
----
-
-**🏗️ What's Built:**
-
-- ✨ **Fully functional** web application
-- 🌐 **Cloud infrastructure** deployed on Vercel
-- 📱 **Mobile responsive** design
-- 🔧 **API endpoints** ready for integration
-- 📖 **Complete documentation** & training materials
-
-**🎯 Why This Wins:**
-
-> *"Monsoon 2026 starts in April. While others promise future solutions, JalRakshak is ready to protect lives NOW."*
-
-**💪 Deployment Facts:**
-
-- ✅ **Production tested** & validated
-- ✅ **Zero setup time** for end users
-- ✅ **30 minutes** staff training required
-- ✅ **Scalable architecture** for pan-India expansion
-
-</td>
-</tr>
-</table>
-
----
-
-## 🏆 Competitive Superiority Matrix
-
-<div align="center">
-
-### **📊 How We Dominate Every Dimension**
-
-</div>
-
-| 🎯 **Critical Dimension** | ❌ **Traditional Systems** | ✅ **JalRakshak Edge** | 🚀 **Winning Impact** |
-|--------------------------|--------------------------|----------------------|----------------------|
-| **⚡ Alert Speed** | ⏰ Hours to Days<br/>Manual processing | 🚀 Under 2 Minutes<br/>Automated AI pipeline | **🔥 100x Faster Response**<br/>Lives saved through speed |
-| **🗣️ Accessibility** | 📄 Text/Dashboard Only<br/>Requires literacy | 🎤 Voice + Visual<br/>Zero literacy barrier | **🌟 3x Population Reach**<br/>Inclusive by design |
-| **🌐 Language Support** | 🇮🇳 English/Hindi Only<br/>Limited regional support | 🗣️ 4+ Regional Languages<br/>Instant multilingual alerts | **💪 Local Empowerment**<br/>Community language priority |
-| **🔒 Privacy** | 👤 Collects User Data<br/>Location tracking | 🛡️ Zero Personal Data<br/>DPDP Act certified | **✨ Complete Privacy**<br/>Trust through transparency |
-| **🚀 Deployment** | 📅 Weeks to Months<br/>Infrastructure setup | ⚡ Ready in 48 Hours<br/>Cloud-native deployment | **🎯 95% Time Saved**<br/>Monsoon-ready NOW |
-| **🤖 AI Integration** | 🗂️ Static Models<br/>Quarterly updates | 🧠 Live AI Processing<br/>Real-time adaptation | **🔮 Dynamic Accuracy**<br/>88.9% prediction success |
-| **📍 Precision** | 🗺️ State/Region Level<br/>Generic warnings | 📌 District-level Hyperlocal<br/>5-10 km precision | **🎪 Targeted Action**<br/>No false alarms |
-| **💰 Cost** | 💸 High Infrastructure<br/>$50K+ initial investment | ☁️ Cloud-native Edge<br/>$5K initial deployment | **💚 90% Cost Reduction**<br/>Sustainable economics |
-| **📱 Devices** | 💻 Desktop Only<br/>Browser-specific | 📲 Universal Support<br/>Works on 2G networks | **🌈 Maximum Accessibility**<br/>No device left behind |
-| **🔄 Data Freshness** | 📆 Daily Updates Best<br/>Manual refresh | ⚡ Real-time Continuous<br/>15-minute intervals | **⏱️ Live Intelligence**<br/>Accurate every moment |
-
----
-
-## 📊 Impact Metrics Dashboard
-
-<div align="center">
-
-### **🎯 Measurable Success Across All Dimensions**
-
-</div>
-
-<table>
-<tr>
-<td width="20%" align="center" valign="top">
-
-### ⚡
-
-# **100x**
-
-#### Faster Alert Delivery
-
-*Minutes vs Hours*
-
-![Speed](https://img.shields.io/badge/Speed-Revolutionary-f59e0b?style=flat-square)
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 🎯
-
-# **88.9%**
-
-#### Model Accuracy Rate
-
-*Field Validated*
-
-![Accuracy](https://img.shields.io/badge/Accuracy-Exceptional-3b82f6?style=flat-square)
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 🌐
-
-# **4+**
-
-#### Regional Languages
-
-*Total Inclusivity*
-
-![Languages](https://img.shields.io/badge/Languages-Multilingual-22c55e?style=flat-square)
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 🔒
-
-# **0**
-
-#### Data Points Collected
-
-*Complete Privacy*
-
-![Privacy](https://img.shields.io/badge/Privacy-Absolute-ec4899?style=flat-square)
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### ⏱️
-
-# **<2min**
-
-#### Processing Time
-
-*Real-time AI*
-
-![AI](https://img.shields.io/badge/AI-Lightning_Fast-8b5cf6?style=flat-square)
-
-</td>
-</tr>
-</table>
-
-<br/>
-
-<table>
-<tr>
-<td width="25%" align="center" valign="top">
-
-### 📢
-
-## **3x**
-
-#### Larger Population Reach
-
-*Voice breaks literacy barriers*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 💰
-
-## **90%**
-
-#### Cost Reduction
-
-*Cloud-native efficiency*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 🚀
-
-## **48hrs**
-
-#### Deployment Time
-
-*From zero to live*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 🌳
-
-## **100**
-
-#### Decision Trees
-
-*Random Forest ensemble*
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -506,9 +234,86 @@ JalRakshak embodies the spirit of **Aatmanirbhar Bharat** (Self-Reliant India):
 
 ---
 
+---
+
+### **🎬 Step-by-Step Guide**
+<div align="center">
+
+
+<table>
+<tr>
+<td width="33%" align="center" valign="top">
+
+#### 1️⃣ **Access Platform**
+
+![Step 1](https://img.shields.io/badge/Step_1-Access-3b82f6?style=for-the-badge)
+
+🌐 **Visit:**  
+[jalrakshaksite.vercel.app](https://jalrakshaksite.vercel.app/)
+
+📱 **Works on:**
+- 💻 Desktop computers
+- 📱 Mobile phones
+- 📲 Tablets
+- ⌚ Smart devices
+
+🌓 **Choose Theme:**
+- 🌙 Dark mode (night)
+- ☀️ Light mode (day)
+- 🔄 Auto-switch
+
+</td>
+<td width="33%" align="center" valign="top">
+
+#### 2️⃣ **Input Location**
+
+![Step 2](https://img.shields.io/badge/Step_2-Location-22c55e?style=for-the-badge)
+
+**Option A - GPS** ⭐ *Recommended*
+- 📍 Click "Auto-detect"
+- ✅ Allow browser access
+- ⚡ Instant capture
+
+**Option B - Manual**
+- 🗺️ Select state
+- 🎯 Select district
+- 📌 Precise targeting
+
+**Privacy Note:**
+- 🔒 Location not stored
+- 🚫 No tracking
+- ✅ Session-only
+
+</td>
+<td width="33%" align="center" valign="top">
+
+#### 3️⃣ **Get Analysis**
+
+![Step 3](https://img.shields.io/badge/Step_3-Results-ec4899?style=for-the-badge)
+
+🔘 **Click "Initialize"**
+
+⚡ **AI Processes:**
+- 🛰️ Satellite analysis
+- 🌧️ Rainfall fusion
+- 🌊 River monitoring
+- 🎲 Confidence scoring
+
+📊 **View Results:**
+- 🎯 Risk category
+- 🎲 Confidence level
+- 📈 Feature breakdown
+- 🎤 Voice alert
+- 💡 Recommendations
+
+</td>
+</tr>
+</table>
+
+---
+
 ## 🏗️ Architecture
 
-<div align="center">
 
 ### **🔄 End-to-End System Flow**
 
@@ -583,6 +388,168 @@ graph TB
 ```
 
 </div>
+
+---
+
+
+
+    
+##  High-Level System Architecture
+
+```mermaid
+graph TB
+    %% Vibrant color styling
+    classDef userClass fill:#FF6B6B,stroke:#C92A2A,stroke-width:4px,color:#fff,font-weight:bold,font-size:14px
+    classDef frontendClass fill:#4ECDC4,stroke:#0C9488,stroke-width:4px,color:#fff,font-weight:bold,font-size:14px
+    classDef apiClass fill:#FFE66D,stroke:#F4D03F,stroke-width:4px,color:#000,font-weight:bold,font-size:14px
+    classDef aiClass fill:#A8E6CF,stroke:#56AB2F,stroke-width:4px,color:#000,font-weight:bold,font-size:14px
+    classDef dbClass fill:#FF6B9D,stroke:#C23866,stroke-width:4px,color:#fff,font-weight:bold,font-size:14px
+    
+    %% Main Components
+    USER["👤 USER<br/>━━━━━━━━━━━━━<br/>📱 Mobile/Web Browser<br/>📍 Location Input<br/>🔔 Receives Alerts"]:::userClass
+    
+    FRONTEND["🎨 FRONTEND<br/>━━━━━━━━━━━━━<br/>⚛️ Next.js 15 + React 18<br/>🎯 3D Risk Dashboard<br/>📊 Real-time Visualization<br/>🗺️ Interactive Maps"]:::frontendClass
+    
+    API["🚀 API GATEWAY<br/>━━━━━━━━━━━━━<br/>⚡ Vercel Edge Functions<br/>🔐 Authentication<br/>🎛️ Rate Limiting<br/>📡 REST + WebSocket"]:::apiClass
+    
+    AI["🤖 AI MODEL<br/>━━━━━━━━━━━━━<br/>🧠 Random Forest (89% Accuracy)<br/>🌊 U-Net Water Detection<br/>📈 Risk Scoring Engine<br/>🎯 Multi-model Inference"]:::aiClass
+    
+    DB["💾 DATABASE<br/>━━━━━━━━━━━━━<br/>🗄️ PostgreSQL + TimescaleDB<br/>📚 10+ Years Historical Data<br/>⚡ Redis Cache<br/>📊 MongoDB Documents"]:::dbClass
+    
+    %% Main Flow
+    USER <-->|"1️⃣ HTTPS Request<br/>User Input"| FRONTEND
+    FRONTEND <-->|"2️⃣ API Calls<br/>JSON/REST"| API
+    API <-->|"3️⃣ ML Inference<br/>Risk Assessment"| AI
+    AI <-->|"4️⃣ Read/Write<br/>Time-series Data"| DB
+    DB -.->|"5️⃣ Historical Context<br/>Query Results"| API
+```
+
+---
+
+
+
+    
+##  Detailed Flow with Data Sources
+
+```mermaid
+graph TB
+    %% Color definitions
+    classDef userClass fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#fff,font-weight:bold
+    classDef frontendClass fill:#4ECDC4,stroke:#0C9488,stroke-width:3px,color:#fff,font-weight:bold
+    classDef apiClass fill:#FFE66D,stroke:#F4D03F,stroke-width:3px,color:#000,font-weight:bold
+    classDef aiClass fill:#A8E6CF,stroke:#56AB2F,stroke-width:3px,color:#000,font-weight:bold
+    classDef dbClass fill:#FF6B9D,stroke:#C23866,stroke-width:3px,color:#fff,font-weight:bold
+    classDef dataClass fill:#95E1D3,stroke:#38B2AC,stroke-width:3px,color:#000,font-weight:bold
+    classDef alertClass fill:#F38181,stroke:#E74C3C,stroke-width:3px,color:#fff,font-weight:bold
+    
+    %% Main Architecture
+    USER["👤 USER DEVICES<br/>━━━━━━━━━━━━━<br/>📱 Mobile Phones<br/>💻 Web Browsers<br/>📍 GPS Location"]:::userClass
+    
+    FRONTEND["🎨 FRONTEND LAYER<br/>━━━━━━━━━━━━━<br/>⚛️ Next.js 15 + React 18<br/>🎯 3D Risk Dashboard<br/>🗺️ Interactive Maps<br/>📊 Visualization"]:::frontendClass
+    
+    API["🚀 API GATEWAY<br/>━━━━━━━━━━━━━<br/>⚡ Vercel Edge Functions<br/>🔐 Auth & Security<br/>🎛️ Rate Limiting<br/>📡 REST API"]:::apiClass
+    
+    AI["🤖 AI MODEL LAYER<br/>━━━━━━━━━━━━━<br/>🧠 Random Forest ML<br/>🌊 U-Net CNN<br/>📈 Risk Scoring<br/>🎯 89% Accuracy"]:::aiClass
+    
+    DB["💾 DATABASE LAYER<br/>━━━━━━━━━━━━━<br/>🗄️ PostgreSQL<br/>⏰ TimescaleDB<br/>⚡ Redis Cache<br/>📊 MongoDB"]:::dbClass
+    
+    %% Data Sources
+    SENTINEL["🛰️ Sentinel-1 SAR<br/>10m Resolution"]:::dataClass
+    IMD["🌧️ IMD Rainfall<br/>Hourly Updates"]:::dataClass
+    CWC["🌊 CWC River Levels<br/>15-min Intervals"]:::dataClass
+    
+    %% Alert System
+    ALERT["🚨 ALERT SYSTEM<br/>━━━━━━━━━━━━━<br/>🗣️ Multilingual TTS<br/>📱 SMS + Voice<br/>🌐 Web Push"]:::alertClass
+    
+    %% Flow Connections
+    USER <-->|"🔄 User Interaction"| FRONTEND
+    FRONTEND <-->|"📡 API Requests"| API
+    API <-->|"🧠 ML Processing"| AI
+    AI <-->|"💾 Data Storage"| DB
+    
+    %% Data to AI
+    SENTINEL -->|"🛰️ Satellite Data"| AI
+    IMD -->|"🌧️ Rainfall Data"| AI
+    CWC -->|"🌊 River Data"| AI
+    
+    %% Alert Flow
+    AI -->|"⚠️ Risk Detected"| ALERT
+    ALERT -->|"🔔 Notifications"| USER
+    
+    %% Database to API
+    DB -.->|"📊 Historical Patterns"| API
+```
+
+---
+
+
+    
+##  Data Flow Through Each Layer
+
+```mermaid
+graph LR
+    classDef userClass fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#fff,font-weight:bold
+    classDef frontendClass fill:#4ECDC4,stroke:#0C9488,stroke-width:3px,color:#fff,font-weight:bold
+    classDef apiClass fill:#FFE66D,stroke:#F4D03F,stroke-width:3px,color:#000,font-weight:bold
+    classDef aiClass fill:#A8E6CF,stroke:#56AB2F,stroke-width:3px,color:#000,font-weight:bold
+    classDef dbClass fill:#FF6B9D,stroke:#C23866,stroke-width:3px,color:#fff,font-weight:bold
+    
+    U["👤 USER<br/>━━━━━━━<br/>Input:<br/>📍 Location<br/>⏰ Timestamp"]:::userClass
+    
+    F["🎨 FRONTEND<br/>━━━━━━━<br/>Process:<br/>🎨 UI Rendering<br/>📊 Data Viz<br/>🔄 State Mgmt"]:::frontendClass
+    
+    A["🚀 API<br/>━━━━━━━<br/>Process:<br/>✅ Validation<br/>🔐 Auth Check<br/>🎛️ Rate Limit<br/>📡 Route Request"]:::apiClass
+    
+    AI["🤖 AI MODEL<br/>━━━━━━━<br/>Process:<br/>⚙️ Features (25+)<br/>🌲 Random Forest<br/>🧠 U-Net CNN<br/>🎯 Risk Score"]:::aiClass
+    
+    DB["💾 DATABASE<br/>━━━━━━━<br/>Process:<br/>🔍 Query Data<br/>💾 Store Results<br/>⚡ Cache Hits<br/>📊 Analytics"]:::dbClass
+    
+    U -->|"1. Location<br/>Request"| F
+    F -->|"2. API Call<br/>JSON Payload"| A
+    A -->|"3. Historical<br/>Context Query"| DB
+    DB -->|"4. 10yr Data<br/>+ Cache"| A
+    A -->|"5. Predict<br/>Request"| AI
+    AI -->|"6. Risk Level<br/>89% Conf"| A
+    AI -->|"7. Log<br/>Prediction"| DB
+    A -->|"8. Response<br/>JSON Data"| F
+    F -->|"9. Alert<br/>Dashboard"| U
+```
+
+---
+
+
+```mermaid
+graph TD
+    %% Style Definitions
+    classDef input fill:#e1f5fe,stroke:#01579b,stroke-width:3px,color:#000;
+    classDef core fill:#f3e5f5,stroke:#4a148c,stroke-width:3px,color:#000;
+    classDef output fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px,color:#000;
+    classDef infra fill:#fff3e0,stroke:#e65100,stroke-width:3px,color:#000;
+
+    subgraph Data_Sources ["📡 Data Ingestion Layer"]
+        A[🛰️ Sentinel-1 SAR]:::input
+        C[🌧️ IMD Rainfall]:::input
+        D[🌊 CWC River Levels]:::input
+    end
+
+    subgraph AI_Core ["🤖 AI Processing Core"]
+        A -->|Water Mask Analysis| B(🧠 AI Inference Engine):::core
+        C -->|Forecast Models| B
+        D -->|Real-time Telemetry| B
+        B -->|Fusion & Risk Logic| E{⚡ Flood Risk Engine}:::core
+    end
+
+    subgraph Alert_System ["🔔 Alert Delivery System"]
+        E -->|Risk Detected| F[📝 Alert Generator]:::output
+        F -->|Text-to-Speech| G[🎤 Multilingual TTS]:::output
+        G -->|Local Languages| H[📱 User Devices]:::output
+    end
+    
+    subgraph Cloud_Infra ["☁️ Cloud Infrastructure"]
+        I[⚡ Next.js Edge]:::infra -.-> B
+        J[🌍 Vercel CDN]:::infra -.-> H
+    end
+```
 
 ---
 
@@ -681,123 +648,6 @@ graph LR
 
 </div>
 
-| Risk Level | Criteria | Action Required |
-|------------|----------|-----------------|
-| 🔴 **HIGH** | Rainfall > 1.5× Normal | Immediate evacuation planning |
-| 🟡 **MEDIUM** | Rainfall > Normal OR Departure > -20% | Monitor closely, prepare resources |
-| 🟢 **LOW** | Normal rainfall patterns | Routine monitoring |
-
----
-
-### 📈 Model Performance Metrics
-
-<div align="center">
-
-<table>
-<tr>
-<td width="25%" align="center">
-
-### 🎯
-
-# **88.9%**
-
-#### Test Accuracy
-
-*Validated on holdout data*
-
-</td>
-<td width="25%" align="center">
-
-### 🔄
-
-# **85.0%**
-
-#### Cross-Validation
-
-*5-fold CV score*
-
-</td>
-<td width="25%" align="center">
-
-### ⚡
-
-# **95.0%**
-
-#### Training Accuracy
-
-*Model learning capability*
-
-</td>
-<td width="25%" align="center">
-
-### 🎲
-
-# **0-100%**
-
-#### Confidence Score
-
-*Per-prediction certainty*
-
-</td>
-</tr>
-</table>
-
-**Performance Analysis:**
-```
-Training Accuracy:   95.0%  ✅ Excellent learning
-Testing Accuracy:    88.9%  ✅ Strong generalization
-Cross-validation:    85.0%  ✅ Robust performance
-                    (±12%)     Stable predictions
-```
-
-</div>
-
----
-
-### 🔬 Model Validation
-
-<table>
-<tr>
-<td width="33%" align="center" valign="top">
-
-#### 📊 **Train-Test Split**
-
-![Train-Test](https://img.shields.io/badge/Split-80%2F20-3b82f6?style=for-the-badge)
-
-- 80% training data
-- 20% testing data
-- Stratified sampling
-- Reproducible split (seed=42)
-
-</td>
-<td width="33%" align="center" valign="top">
-
-#### 🔄 **Cross-Validation**
-
-![CV](https://img.shields.io/badge/Folds-5-10b981?style=for-the-badge)
-
-- 5-fold CV
-- Stratified folds
-- Mean: 85.0%
-- Std Dev: ±12%
-
-</td>
-<td width="33%" align="center" valign="top">
-
-#### 🎯 **Metrics Tracked**
-
-![Metrics](https://img.shields.io/badge/Metrics-Multiple-ec4899?style=for-the-badge)
-
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Confusion Matrix
-
-</td>
-</tr>
-</table>
-
 ---
 
 ## 🛠️ Tech Stack
@@ -837,71 +687,20 @@ Cross-validation:    85.0%  ✅ Robust performance
 ![CDN](https://img.shields.io/badge/Global_CDN-Active-22c55e?style=for-the-badge&logo=cloudflare&logoColor=white)
 
 </div>
+---
 
 ---
 
-## 📂 Project Structure
 
-<div align="center">
-
-### **📁 Full Repository Layout**
-
-</div>
-
-```
-JalRakshak/
-│
-├── 📁 Frontend (Next.js Application)
-│   ├── 📁 src/
-│   │   ├── 📁 app/              # Next.js App Router
-│   │   │   ├── 📁 api/          # API endpoints
-│   │   │   ├── layout.tsx       # Root layout
-│   │   │   └── page.tsx         # Home page
-│   │   │
-│   │   ├── 📁 components/       # React Components
-│   │   │   ├── Hero.tsx         # Landing hero
-│   │   │   ├── RiskDashboard.tsx
-│   │   │   ├── VoiceAlert.tsx
-│   │   │   └── LocationPicker.tsx
-│   │   │
-│   │   └── 📁 lib/              # Utilities
-│   │       ├── aiEngine.ts      # AI risk scoring
-│   │       ├── dataLoader.ts    # Dataset management
-│   │       └── ttsGenerator.ts  # Voice synthesis
-│   │
-│   ├── 📁 public/
-│   │   ├── 📁 data/             # Public datasets
-│   │   └── 📁 assets/           # Images, icons
-│   │
-│   ├── 📄 package.json
-│   ├── 📄 next.config.js
-│   └── 📄 tailwind.config.ts
-│
-├── 📁 AI Model (Python Backend)
-│   ├── 📄 requirements.txt      # Python dependencies
-│   ├── 📄 data_processor.py     # Data loading & feature engineering
-│   ├── 📄 flood_model.py        # ML model training & prediction
-│   ├── 📄 app.py                # Flask web server
-│   ├── 📁 templates/
-│   │   └── index.html           # Model dashboard UI
-│   ├── 📁 models/
-│   │   └── flood_model.pkl      # Trained model (auto-generated)
-│   └── 📁 data/
-│       └── rainfall_clean_districtwise_NE_India_Jan2026.csv
-│
-├── 📄 README.md                 # This file!
-└── 📄 LICENSE
-```
-
----
 
 ## ⚡ Quick Start
 
-<div align="center">
 
 ### **🚀 Get Started in 3 Simple Steps**
 
-</div>
+
+<div align="center">
+
 
 ### **Prerequisites**
 
@@ -928,9 +727,11 @@ JalRakshak/
 </tr>
 </table>
 
+</div>
+
 ---
 
-### **Installation**
+# **Installation**
 
 #### 🎨 **Frontend Setup**
 
@@ -1316,114 +1117,11 @@ Open Government Data
 
 ---
 
-## 🔒 Privacy & Responsible AI
-
-<div align="center">
-
-### **🛡️ Privacy-First, Ethics-Driven Design**
-
-![DPDP](https://img.shields.io/badge/DPDP_Act-Compliant-8b5cf6?style=for-the-badge&logo=shield&logoColor=white)
-![Privacy](https://img.shields.io/badge/Zero-Data_Collection-22c55e?style=for-the-badge&logo=lock&logoColor=white)
-![Ethics](https://img.shields.io/badge/Responsible-AI-3b82f6?style=for-the-badge&logo=brain&logoColor=white)
-
-</div>
-
-<table>
-<tr>
-<td width="33%" align="center" valign="top">
-
-### 🛡️ **Privacy First**
-
-![Privacy](https://img.shields.io/badge/Personal_Data-0_Collected-22c55e?style=for-the-badge)
-
-**What We DON'T Collect:**
-- ❌ No personal information
-- ❌ No location history
-- ❌ No user profiles
-- ❌ No tracking cookies
-- ❌ No third-party analytics
-
-**What We DO:**
-- ✅ Browser-based geolocation only
-- ✅ Session-based processing
-- ✅ Anonymized queries
-- ✅ DPDP Act certified
-- ✅ Open methodology
-
-</td>
-<td width="33%" align="center" valign="top">
-
-### 🔍 **Explainable AI**
-
-![XAI](https://img.shields.io/badge/Explainable-AI-3b82f6?style=for-the-badge)
-
-**Transparency Features:**
-- 📊 Signal-based logic
-- 🎲 Confidence scores shown
-- 📈 Feature importance
-- ⚠️ Uncertainty acknowledged
-- 🔍 Decision traceability
-
-**Bias Mitigation:**
-- ⚖️ Multi-factor analysis
-- 🌐 Regional calibration
-- 📊 Balanced training data
-- 🔄 Regular retraining
-- 🧪 Continuous validation
-
-</td>
-<td width="33%" align="center" valign="top">
-
-### ⚖️ **Ethical Design**
-
-![Ethics](https://img.shields.io/badge/Community-First-ec4899?style=for-the-badge)
-
-**Our Commitments:**
-- 👥 Community-focused approach
-- ♿ Accessibility priority
-- 🗣️ Regional language support
-- 📖 Open methodology
-- 🤝 Stakeholder collaboration
-
-**Safety Measures:**
-- 🚨 Conservative risk alerts
-- 📞 Human-in-the-loop validation
-- 🔄 Feedback mechanisms
-- 📚 User education
-- 🛡️ Fail-safe defaults
-
-</td>
-</tr>
-</table>
-
----
-
-### **📜 DPDP Act Compliance**
-
-<div align="center">
-
-JalRakshak fully complies with India's **Digital Personal Data Protection Act, 2023**
-
-</div>
-
-| Requirement | Our Implementation | Status |
-|-------------|-------------------|--------|
-| **Data Minimization** | Zero personal data collection | ✅ Compliant |
-| **Purpose Limitation** | Only flood risk assessment | ✅ Compliant |
-| **Storage Limitation** | No data storage beyond session | ✅ Compliant |
-| **User Rights** | No data = no requests needed | ✅ Compliant |
-| **Transparency** | Open-source methodology | ✅ Compliant |
-| **Security** | HTTPS, edge computing | ✅ Compliant |
-
----
-
 ## 💻 How to Use the Live Application
 
 <div align="center">
 
 ### **📱 3 Simple Steps to Get Your Flood Risk Assessment**
-
-![Live](https://img.shields.io/badge/🌐_LIVE-jalrakshaksite.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 </div>
 
@@ -1448,515 +1146,60 @@ graph LR
     style H fill:#ff8787,stroke:#fa5252,stroke-width:3px,color:#fff
 ```
 
----
-
-### **🎬 Step-by-Step Guide**
-
-<table>
-<tr>
-<td width="33%" align="center" valign="top">
-
-#### 1️⃣ **Access Platform**
-
-![Step 1](https://img.shields.io/badge/Step_1-Access-3b82f6?style=for-the-badge)
-
-🌐 **Visit:**  
-[jalrakshaksite.vercel.app](https://jalrakshaksite.vercel.app/)
-
-📱 **Works on:**
-- 💻 Desktop computers
-- 📱 Mobile phones
-- 📲 Tablets
-- ⌚ Smart devices
-
-🌓 **Choose Theme:**
-- 🌙 Dark mode (night)
-- ☀️ Light mode (day)
-- 🔄 Auto-switch
-
-</td>
-<td width="33%" align="center" valign="top">
-
-#### 2️⃣ **Input Location**
-
-![Step 2](https://img.shields.io/badge/Step_2-Location-22c55e?style=for-the-badge)
-
-**Option A - GPS** ⭐ *Recommended*
-- 📍 Click "Auto-detect"
-- ✅ Allow browser access
-- ⚡ Instant capture
-
-**Option B - Manual**
-- 🗺️ Select state
-- 🎯 Select district
-- 📌 Precise targeting
-
-**Privacy Note:**
-- 🔒 Location not stored
-- 🚫 No tracking
-- ✅ Session-only
-
-</td>
-<td width="33%" align="center" valign="top">
-
-#### 3️⃣ **Get Analysis**
-
-![Step 3](https://img.shields.io/badge/Step_3-Results-ec4899?style=for-the-badge)
-
-🔘 **Click "Initialize"**
-
-⚡ **AI Processes:**
-- 🛰️ Satellite analysis
-- 🌧️ Rainfall fusion
-- 🌊 River monitoring
-- 🎲 Confidence scoring
-
-📊 **View Results:**
-- 🎯 Risk category
-- 🎲 Confidence level
-- 📈 Feature breakdown
-- 🎤 Voice alert
-- 💡 Recommendations
-
-</td>
-</tr>
-</table>
 
 ---
 
-### **🌟 Live Demo Features**
-
-<div align="center">
-
-**Experience the full power at [jalrakshaksite.vercel.app](https://jalrakshaksite.vercel.app/)**
-
-</div>
-
-| Feature | Description | Technology |
-|---------|-------------|------------|
-| 🎨 **Dual Themes** | Seamless dark/light switching | CSS Variables + React State |
-| 📍 **Smart Location** | GPS auto-detection or manual | Browser Geolocation API |
-| 🌊 **3D Visuals** | Animated topography | Three.js / CSS 3D |
-| ⚡ **Real-time AI** | Live flood risk computation | Random Forest + Edge Functions |
-| 🎤 **Voice Alerts** | Multilingual audio warnings | TTS Engine Integration |
-| 📱 **Responsive UI** | All devices supported | Mobile-first Design |
-| 🔒 **Privacy First** | Zero data collection | Session-based Processing |
-| 🚀 **Lightning Fast** | Sub-second loads | Vercel Edge CDN |
-
-<div align="center">
-
-```
-🌐 Live URL: https://jalrakshaksite.vercel.app/
-⚡ Load Time: < 1 second
-📡 Global CDN: Vercel Edge Network
-🔒 Security: HTTPS + TLS 1.3
-🎯 Uptime: 99.9% SLA
-```
-
-</div>
-
----
-
-## 🎯 Pilot Feasibility
-
-<div align="center">
-
-### **🚀 Ready for Immediate Deployment**
-
-</div>
-
-### **👥 Target Users**
-
-<table>
-<tr>
-<td width="25%" align="center" valign="top">
-
-### 🏛️
-
-**Government**
-
-District Disaster Management Authorities
-
-*Decision makers*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 🚨
-
-**Emergency**
-
-State Response Teams
-
-*First responders*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 👥
-
-**Community**
-
-Village Response Groups
-
-*Ground-level action*
-
-</td>
-<td width="25%" align="center" valign="top">
-
-### 📻
-
-**Media**
-
-Local Radio Stations
-
-*Alert dissemination*
-
-</td>
-</tr>
-</table>
-
----
-
-### **✅ System Requirements**
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-#### 🌐 **For End Users**
-
-**Minimal Requirements:**
-- ✅ Any web browser (Chrome, Firefox, Safari, Edge)
-- ✅ Internet connection (works on 2G+)
-- ✅ Any device (desktop, mobile, tablet)
-- ✅ No app installation needed
-- ✅ No account registration required
-
-**Optional for Voice:**
-- 🔊 Device speakers
-- 🎧 Headphones/earphones
-
-</td>
-<td width="50%" valign="top">
-
-#### 🏛️ **For Administrators**
-
-**Infrastructure Needs:**
-- ✅ Internet access
-- ✅ CSV data updates (monthly)
-- ✅ Browser access for monitoring
-- ✅ 30-minute staff training
-- ✅ Email for notifications (optional)
-
-**No Need For:**
-- ❌ Server setup
-- ❌ Database management
-- ❌ IT infrastructure
-- ❌ Software licenses
-
-</td>
-</tr>
-</table>
-
----
-
-### **⏱️ Deployment Timeline**
-
-<div align="center">
-
-```mermaid
-gantt
-    title JalRakshak Deployment Schedule
-    dateFormat  YYYY-MM-DD
-    section Preparation
-    Data Collection           :2026-01-24, 1d
-    Staff Training           :2026-01-25, 1d
-    section Deployment
-    System Configuration     :2026-01-26, 1d
-    Testing & Validation     :2026-01-27, 1d
-    section Launch
-    Pilot Launch            :2026-01-28, 1d
-    Full Deployment         :2026-01-29, 1d
-```
-
-</div>
-
-| Phase | Duration | Activities |
-|-------|----------|------------|
-| **Day 1** | 8 hours | Data collection & integration |
-| **Day 2** | 4 hours | Staff training & orientation |
-| **Day 3** | 8 hours | System configuration & setup |
-| **Day 4** | 6 hours | Testing & validation |
-| **Day 5** | 2 hours | Pilot launch |
-| **Day 6** | - | Full deployment |
-
-**Total Time: 48 hours from zero to live** ⚡
-
----
-
-## 🤝 Contributing
-
-<div align="center">
-
-### **🌟 Join the Mission to Protect Bharat**
-
-![Contributors](https://img.shields.io/badge/Contributors-Welcome-22c55e?style=for-the-badge&logo=github&logoColor=white)
-![PRs](https://img.shields.io/badge/PRs-Welcome-3b82f6?style=for-the-badge&logo=git&logoColor=white)
-![Issues](https://img.shields.io/badge/Issues-Open-ec4899?style=for-the-badge&logo=github&logoColor=white)
-
-</div>
-
-We welcome contributions from:
-- 💻 **Developers**: Frontend, backend, ML engineers
-- 🎨 **Designers**: UI/UX improvements
-- 📊 **Data Scientists**: Model optimization
-- 🌍 **Domain Experts**: Hydrology, meteorology
-- 📝 **Writers**: Documentation, translation
-- 🧪 **Testers**: QA, user testing
-
----
-
-### **🔧 How to Contribute**
-
-```bash
-# 1️⃣ Fork the repository
-# Click "Fork" button on GitHub
-
-# 2️⃣ Clone your fork
-git clone https://github.com/YOUR_USERNAME/jalrakshak.site.git
-cd jalrakshak.site
-
-# 3️⃣ Create a feature branch
-git checkout -b feature/AmazingFeature
-
-# 4️⃣ Make your changes
-# Edit files, add features, fix bugs
-
-# 5️⃣ Commit your changes
-git add .
-git commit -m 'Add: AmazingFeature that does X'
-
-# 6️⃣ Push to your fork
-git push origin feature/AmazingFeature
-
-# 7️⃣ Open a Pull Request
-# Go to GitHub and click "New Pull Request"
-```
-
----
-
-### **📋 Contribution Guidelines**
-
-<table>
-<tr>
-<td width="33%" valign="top">
-
-#### 💻 **Code Standards**
-
-- ✅ Follow existing style
-- ✅ Write clear comments
-- ✅ Add tests for new features
-- ✅ Update documentation
-- ✅ No breaking changes
-
-</td>
-<td width="33%" valign="top">
-
-#### 🧪 **Testing**
-
-- ✅ Test locally first
-- ✅ Check all browsers
-- ✅ Mobile responsiveness
-- ✅ AI model validation
-- ✅ Performance benchmarks
-
-</td>
-<td width="33%" valign="top">
-
-#### 📝 **Documentation**
-
-- ✅ Update README
-- ✅ Add code comments
-- ✅ Include examples
-- ✅ Screenshot updates
-- ✅ API documentation
-
-</td>
-</tr>
-</table>
-
----
-
-### **🎯 Areas We Need Help**
-
-| Area | Priority | Skills Needed |
-|------|----------|---------------|
-| 🌐 **Translation** | 🔥 High | Local languages (Assamese, Bengali, etc.) |
-| 🤖 **ML Optimization** | 🔥 High | Python, Scikit-learn, Deep Learning |
-| 📱 **Mobile App** | 🔶 Medium | React Native, Flutter |
-| 🎨 **UI/UX** | 🔶 Medium | Figma, Design Systems |
-| 📊 **Data Pipelines** | 🔶 Medium | Data Engineering, ETL |
-| 🧪 **Testing** | ⬜ Low | QA, Selenium, Jest |
-
----
 
 ## 👥 Our Team
 
 <div align="center">
 
-### **🌟 Meet the JalRakshak Team**
-
-*Building Aatmanirbhar technology for Bharat*
-
-</div>
-
-<table>
-<tr>
-<td width="20%" align="center" valign="top">
-
-### 👨‍💼
-
-**Subhajit Roy**
-
-*Team Lead*
-
-![Role](https://img.shields.io/badge/Role-Architecture-3b82f6?style=flat-square)
-
-**Responsibilities:**
-- System architecture
-- Technical strategy
-- Project coordination
-- Stakeholder liaison
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 💻
-
-**Tamal Ghosh**
-
-*Frontend Lead*
-
-![Role](https://img.shields.io/badge/Role-UI%2FUX-ec4899?style=flat-square)
-
-**Responsibilities:**
-- Frontend development
-- UI/UX design
-- Animation implementation
-- Responsive design
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 🤖
-
-**Nishita Das**
-
-*AI Engineer*
-
-![Role](https://img.shields.io/badge/Role-Machine_Learning-10b981?style=flat-square)
-
-**Responsibilities:**
-- ML model development
-- Algorithm optimization
-- Feature engineering
-- Model validation
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 📊
-
-**Binita**
-
-*Data Analyst*
-
-![Role](https://img.shields.io/badge/Role-Data_Science-f59e0b?style=flat-square)
-
-**Responsibilities:**
-- Dataset management
-- Data cleaning
-- Statistical analysis
-- Visualization
-
-</td>
-<td width="20%" align="center" valign="top">
-
-### 🔍
-
-**Disha Sonowal**
-
-*QA Lead*
-
-![Role](https://img.shields.io/badge/Role-Quality_Assurance-8b5cf6?style=flat-square)
-
-**Responsibilities:**
-- Quality assurance
-- Testing protocols
-- Bug tracking
-- User acceptance
-
-</td>
-</tr>
-</table>
-
-<div align="center">
-
-**Combined Experience:** 15+ years in tech, AI, and disaster management  
-**Mission:** Protecting North East India from floods with indigenous technology
+| Role | Name | Responsibility |
+|------|------|----------------|
+| 👨‍💼 **Team Lead** | Subhajit Roy | Architecture & Strategy |
+| 💻 **Frontend Lead** | Tamal Ghosh | UI/UX Development |
+| 🤖 **AI Engineer** | Nishita Das | ML Logic & Communication |
+| 📊 **Data Analyst** | Binita | Dataset Management |
+| 🔍 **QA Lead** | Disha Sonowal | Quality Assurance |
 
 </div>
 
 ---
 
-## 📞 Contact & Support
+## 🎯 The Challenge
 
 <div align="center">
 
-### **💬 We're Here to Help!**
+### **Every monsoon, North East India faces devastating floods**
+
+*JalRakshak brings Aatmanirbhar AI intelligence to protect Bharat's communities*
 
 </div>
 
 <table>
 <tr>
-<td width="33%" align="center" valign="top">
+<td width="50%" valign="top">
 
-### 🐛
+### 🚨 Current Reality
 
-**Report Bugs**
-
-Found an issue?
-
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sr-857/jalrakshak.site/issues)
-
-Create a detailed bug report
-
-</td>
-<td width="33%" align="center" valign="top">
-
-### 💡
-
-**Feature Requests**
-
-Have an idea?
-
-[![Discussions](https://img.shields.io/badge/GitHub-Discussions-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sr-857/jalrakshak.site/discussions)
-
-Share your suggestions
+- ⏰ **Delayed alerts** that arrive too late
+- 📊 **Text-heavy dashboards** inaccessible to many
+- 🗺️ **Generic warnings** lacking local context
+- 📱 **Poor last-mile** communication infrastructure
+- 💔 **Lives at risk** every monsoon season
+- 🌍 **Foreign dependency** on disaster tech
 
 </td>
-<td width="33%" align="center" valign="top">
+<td width="50%" valign="top">
 
-### 📧
+### ✨ JalRakshak Solution
 
-**Direct Contact**
-
-Need immediate help?
-
-[![Email](https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:subhajitroy857+jalr@gmail.com)
-
-Email us directly
+- 🎤 **Voice-first alerts** in local languages
+- ⚡ **Real-time AI** with Sentinel-1 SAR
+- 📍 **District-level precision** targeting
+- 🔊 **30-45 second** actionable messages
+- 💪 **Deployment-ready** for immediate impact
+- 🇮🇳 **Aatmanirbhar** Indian technology
 
 </td>
 </tr>
@@ -1964,23 +1207,190 @@ Email us directly
 
 ---
 
-### **📱 Social & Community**
+## 🇮🇳 Aatmanirbhar Bharat AI
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sr-857)
-[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/jalrakshak)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/company/jalrakshak)
+### **Built in India, For India**
 
-**Community Guidelines:**
-- 🤝 Be respectful and inclusive
-- 💬 Constructive feedback only
-- 🌍 Focus on community impact
-- 📚 Share knowledge freely
+</div>
+
+JalRakshak embodies the spirit of **Aatmanirbhar Bharat** (Self-Reliant India):
+
+- 🏛️ **Indian Data Sources**: IMD, CWC, ASDMA, ISRO
+- 💻 **Indian Development**: Built by Indian engineers for Indian communities
+- 🗣️ **Indian Languages**: Assamese, Bengali, Hindi, English
+- 🎯 **Indian Context**: NER-specific rainfall patterns & river behaviors
+- 🔒 **Indian Privacy**: DPDP Act compliant from the ground up
+- 🌏 **Indian Innovation**: Autonomous hydrology intelligence pioneered in India
+
+**This isn't imported technology adapted for India.**  
+**This is Indian innovation solving Indian challenges.**
+
+---
+
+## 📊 Impact Metrics Dashboard
+
+<div align="center">
+
+### **🎯 Measurable Success Across All Dimensions**
+
+</div>
+
+<table>
+<tr>
+<td width="20%" align="center" valign="top">
+
+### ⚡
+
+# **100x**
+
+#### Faster Alert Delivery
+
+*Minutes vs Hours*
+
+![Speed](https://img.shields.io/badge/Speed-Revolutionary-f59e0b?style=flat-square)
+
+</td>
+<td width="20%" align="center" valign="top">
+
+### 🎯
+
+# **88.9%**
+
+#### Model Accuracy Rate
+
+*Field Validated*
+
+![Accuracy](https://img.shields.io/badge/Accuracy-Exceptional-3b82f6?style=flat-square)
+
+</td>
+<td width="20%" align="center" valign="top">
+
+### 🌐
+
+# **4+**
+
+#### Regional Languages
+
+*Total Inclusivity*
+
+![Languages](https://img.shields.io/badge/Languages-Multilingual-22c55e?style=flat-square)
+
+</td>
+<td width="20%" align="center" valign="top">
+
+### 🔒
+
+# **0**
+
+#### Data Points Collected
+
+*Complete Privacy*
+
+![Privacy](https://img.shields.io/badge/Privacy-Absolute-ec4899?style=flat-square)
+
+</td>
+<td width="20%" align="center" valign="top">
+
+### ⏱️
+
+# **<2min**
+
+#### Processing Time
+
+*Real-time AI*
+
+![AI](https://img.shields.io/badge/AI-Lightning_Fast-8b5cf6?style=flat-square)
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+<table>
+<tr>
+<td width="25%" align="center" valign="top">
+
+### 📢
+
+## **3x**
+
+#### Larger Population Reach
+
+*Voice breaks literacy barriers*
+
+</td>
+<td width="25%" align="center" valign="top">
+
+### 💰
+
+## **90%**
+
+#### Cost Reduction
+
+*Cloud-native efficiency*
+
+</td>
+<td width="25%" align="center" valign="top">
+
+### 🚀
+
+## **48hrs**
+
+#### Deployment Time
+
+*From zero to live*
+
+</td>
+<td width="25%" align="center" valign="top">
+
+### 🌳
+
+## **100**
+
+#### Decision Trees
+
+*Random Forest ensemble*
+
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+### 🌊 JalRakshak - Autonomous Hydrology Intelligence
+
+**Namaste. Surakshit Bharat.**
+
+**Made with ❤️ for Bharat by Indians**
+
+[![⭐ Star this repo](https://img.shields.io/github/stars/sr-857/jalrakshak.site?style=social)](https://github.com/sr-857/jalrakshak.site)
+[![🔄 Fork](https://img.shields.io/github/forks/sr-857/jalrakshak.site?style=social)](https://github.com/sr-857/jalrakshak.site/fork)
+[![👁️ Watch](https://img.shields.io/github/watchers/sr-857/jalrakshak.site?style=social)](https://github.com/sr-857/jalrakshak.site)
+
+---
+
+<img src="https://img.shields.io/badge/🇮🇳-Aatmanirbhar_Bharat-ff6b35?style=for-the-badge" />
+<img src="https://img.shields.io/badge/SAR-Sentinel--1-0ea5e9?style=for-the-badge" />
+<img src="https://img.shields.io/badge/IMD-Fusion-10b981?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Security-Audit_Verified-22c55e?style=for-the-badge" />
+
+*This is not just a project. This is a mission to protect Bharat's communities.*
+
+**[🚀 Visit Live Application](https://jalrakshaksite.vercel.app/)** • **[📖 Read Docs](#-key-features)** • **[⭐ Star on GitHub](https://github.com/sr-857/jalrakshak.site)**
+
+---
+
+### 🏆 Competition Ready • 🎯 Production Deployed • 💪 Impact Driven
 
 </div>
 
 ---
+
 
 ## 🙏 Acknowledgments
 
@@ -2057,86 +1467,10 @@ We extend our gratitude to:
 
 This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
 
-**You are free to:**
-- ✅ Use commercially
-- ✅ Modify
-- ✅ Distribute
-- ✅ Private use
-
-**Under the conditions:**
-- 📝 License and copyright notice
-- ⚖️ Same license for derivatives
 
 </div>
 
 ---
 
-<div align="center">
 
-# 🌊 JalRakshak
 
-### *Autonomous Hydrology Intelligence for Bharat*
-
----
-
-### **"Namaste. Surakshit Bharat."**
-
-**Made with ❤️ for Bharat by Indians**
-
----
-
-<img src="https://img.shields.io/badge/🇮🇳-Aatmanirbhar_Bharat-ff6b35?style=for-the-badge" />
-<img src="https://img.shields.io/badge/SAR-Sentinel--1-0ea5e9?style=for-the-badge" />
-<img src="https://img.shields.io/badge/IMD-Fusion-10b981?style=for-the-badge" />
-<img src="https://img.shields.io/badge/ML-Random_Forest-8b5cf6?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Security-Audit_Verified-22c55e?style=for-the-badge" />
-
----
-
-### **🚀 Take Action Now**
-
-<table>
-<tr>
-<td width="33%" align="center">
-
-[![Live Demo](https://img.shields.io/badge/🌐_Try-Live_Demo-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://jalrakshaksite.vercel.app/)
-
-**Experience It Live**
-
-</td>
-<td width="33%" align="center">
-
-[![GitHub](https://img.shields.io/badge/⭐_Star-On_GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sr-857/jalrakshak.site)
-
-**Support the Project**
-
-</td>
-<td width="33%" align="center">
-
-[![Deploy](https://img.shields.io/badge/🚀_Deploy-With_Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/new/clone?repository-url=https://github.com/sr-857/jalrakshak.site)
-
-**Deploy Your Own**
-
-</td>
-</tr>
-</table>
-
----
-
-### **📊 Project Stats**
-
-![GitHub Stars](https://img.shields.io/github/stars/sr-857/jalrakshak.site?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/sr-857/jalrakshak.site?style=social)
-![GitHub Watchers](https://img.shields.io/github/watchers/sr-857/jalrakshak.site?style=social)
-
----
-
-### 🏆 **Competition Ready • Production Deployed • Impact Driven**
-
-*This is not just a project. This is a mission to protect Bharat's communities.*
-
----
-
-<sub>**Disclaimer:** JalRakshak is a flood risk assessment tool. While we strive for accuracy, users should combine our predictions with official government warnings and local knowledge for decision-making.</sub>
-
-</div>
