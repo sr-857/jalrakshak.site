@@ -40,7 +40,7 @@
 
 ---
 
-**[🚀 Live Demo](https://jalrakshaksite.vercel.app/)** • **[📖 Documentation](#-documentation)** • **[🎯 Features](#-key-features)** • **[🤖 AI Model](#-ai-model-architecture)** • **[👥 Team](#-our-team)**
+**[🚀 Live Demo](https://jalrakshaksite.vercel.app/)** • **[📖 Documentation](https://github.com/sr-857/jalrakshak.site/blob/main/docs/Technical%20Architecture%20Document.pdf)** • **[🎯 Features](#-key-features)** • **[🤖 AI Model](#-ai-model-architecture)** • **[👥 Team](#-our-team)**
 
 ---
 
