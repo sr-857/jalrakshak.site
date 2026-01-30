@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # mount project into container for live-reload during development
+      - ./:/app:cached
+      # keep container's node_modules (prevents host overwrite)
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+    tty: true
+    stdin_open: true
+
+# Notes:
+# - For production, remove the volume mounts (so the image's content is used) and set NODE_ENV=production and command: ["npm","run","start"].
+# - If you prefer a separate Python service instead of the multi-stage Dockerfile approach, tell me and I can provide a compose setup with a distinct `python` service.
